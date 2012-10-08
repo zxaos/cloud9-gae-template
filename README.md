@@ -1,18 +1,51 @@
-# README for a newly created project.
+GAE on Cloud9
+=============
 
-There are a couple of things you should do first, before you can use all of Git's power:
+Using google app engine on CLoud9 currenlty requires you to compile or download
+Python 2.7 and PIL in your workspace. You can then use the terminal to start,
+stop and deploy google app engine applications.
 
-  * Add a remote to this project: in the Cloud9 IDE command line, you can execute the following commands
-    `git remote add [remote name] [remote url (eg. 'git@github.com:/ajaxorg/node_chat')]` [Enter]
-  * Create new files inside your project
-  * Add them to to Git by executing the following command
-    `git add [file1, file2, file3, ...]` [Enter]
-  * Create a commit which can be pushed to the remote you just added
-    `git commit -m 'added new files'` [Enter]
-  * Push the commit the remote
-    `git push [remote name] master` [Enter]
 
-That's it! If this doesn't work for you, please visit the excellent resources from [Github.com](http://help.github.com) and the [Pro Git](http://http://progit.org/book/) book.
-If you can't find your answers there, feel free to ask us via Twitter (@cloud9ide), [mailing list](groups.google.com/group/cloud9-ide) or IRC (#cloud9ide on freenode).
+Instalation
+-----------
 
-Happy coding!
+Install Python 2.7
+
+```
+wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
+tar xvfz Python-2.7.3.tgz
+cd Python-2.7.3 
+./configure --prefix=$HOME
+make
+make install
+cd ..
+rm -rf Python-2.7.3*
+```
+
+Install App Engine
+
+```
+wget http://googleappengine.googlecode.com/files/google_appengine_1.7.2.zip
+unzip google_appengine_1.7.2.zip
+rm google_appengine_1.7.2.zip
+mv google_appengine ../lib/
+cd ../bin/
+ln -s ../lib/google_appengine/*.py .
+```
+
+PIL
+```
+wget http://effbot.org/downloads/Imaging-1.1.7.tar.gz
+tar xvfz Imaging-1.1.7.tar.gz
+cd Imaging-1.1.7
+python setup.py install
+cd ..
+rm -rf rm Imaging-1.1.7*
+```
+
+Run the app
+-----------
+
+```
+dev_appserver.py -a $IP -p $PORT .
+```
