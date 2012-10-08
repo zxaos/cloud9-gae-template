@@ -18,7 +18,7 @@ function install_appengine {
     ln -s ../lib/google_appengine/*.py .
 }
 
-function install_pid {
+function install_pil {
     wget http://effbot.org/downloads/Imaging-1.1.7.tar.gz
     tar xvfz Imaging-1.1.7.tar.gz
     cd Imaging-1.1.7
@@ -29,4 +29,4 @@ function install_pid {
 
 install_python27
 install_appengine
-install_pid
+install_pil
