@@ -8,7 +8,7 @@ To make this step easier we created an install script and this GAE project
 template.
 
 
-## Instalation
+## Installation
 
 You have two options to add GAE support.
 
