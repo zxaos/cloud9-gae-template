@@ -1,6 +1,6 @@
 # GAE on Cloud9
 
-Using google app engine on CLoud9 currenlty requires you to compile or download
+Using google app engine on Cloud9 currenlty requires you to compile or download
 Python 2.7 and PIL in your workspace. You can then use the terminal to start,
 stop and deploy google app engine applications.
 
