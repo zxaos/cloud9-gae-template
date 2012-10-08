@@ -1,50 +1,52 @@
-GAE on Cloud9
-=============
+# GAE on Cloud9
 
 Using google app engine on CLoud9 currenlty requires you to compile or download
 Python 2.7 and PIL in your workspace. You can then use the terminal to start,
 stop and deploy google app engine applications.
 
+To make this step easier we created an install script and this GAE project
+template.
 
-Instalation
------------
 
-Install Python 2.7
+## Instalation
 
+You have two options to add GAE support.
+
+1. Add GAE support to an exsiting Cloud9 workspace
+2. Create a new GAE application based on this project template
+
+### Add GAE support to your existing Cloud9 workspace
+
+You can easily add GAE support to any Cloud9 project by running the compile script
+from this project template:
+
+1. Open a terminal window
+2. Execute the compile script (this will take a few minutes):
 ```
-wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
-tar xvfz Python-2.7.3.tgz
-cd Python-2.7.3 
-./configure --prefix=$HOME
-make
-make install
-cd ..
-rm -rf Python-2.7.3*
-```
-
-Install App Engine
-
-```
-wget http://googleappengine.googlecode.com/files/google_appengine_1.7.2.zip
-unzip google_appengine_1.7.2.zip
-rm google_appengine_1.7.2.zip
-mv google_appengine ../lib/
-cd ../bin/
-ln -s ../lib/google_appengine/*.py .
+curl https://raw.github.com/fjakobs/cloud9-gae-template/master/compile-gae.sh | bash
 ```
 
-PIL
+### Create a new GAE application based on this project template
+
+You can also create a new GAE application by simply cloning this template. This
+is convenient because it already includes a small hello world app to immediately 
+test it.
+
+1. Got to your Cloud9 dashboard <https://c9.io/dashboard.html>
+2. Select `create new workspace` -> `clone from url`
+3. Use `git://github.com/fjakobs/cloud9-gae-template.git` as URL
+4. Open the project
+5. In the project open a new Terminal window
+6. Execute the compile script (this will take a few minutes)
 ```
-wget http://effbot.org/downloads/Imaging-1.1.7.tar.gz
-tar xvfz Imaging-1.1.7.tar.gz
-cd Imaging-1.1.7
-python setup.py install
-cd ..
-rm -rf rm Imaging-1.1.7*
+./compile-gae.sh
 ```
 
-Run the app
------------
+## Run the app
+
+Once everything is compiled and installed you can use all gae python scripts in 
+the terminal. However to run the app server locally you need to make sure that
+it is listening on the Cloud9 port and ip address so our proxy can find it.
 
 ```
 dev_appserver.py -a $IP -p $PORT .
